@@ -1,0 +1,44 @@
+body {
+    background-image: url('../images/background.jpg');
+    font-family: 'Space Mono' , monospace;
+    color: #ffffff;
+    text-align: center;
+}
+
+#main-body {
+    background-image: url('../images/frame.jpg');
+    background-color: black;
+    height: 665px;
+    margin: 60px 0;
+
+}
+
+#title {
+    margin: 75px 140px 0 0;
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+#timer {
+    margin: 45px 140px 0 0;
+    font-size: 30px;
+}
+
+#question {
+    margin: 45px 140px 30px 0;
+    font-size: 24px;
+}
+
+.answer {
+    margin:  5px 0 0 150px;
+    font-size: 37px;
+    height: 40px;
+    width: 450px;
+}
+
+.answer:hover{
+    background: lightpink;
+    border: 2px blue solid; /* make this whatever you want */
+    height: 44px;
+    color: black
+    }
