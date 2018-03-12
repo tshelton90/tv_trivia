@@ -20,14 +20,12 @@
             <div class="col-md-10" id="main-body";>
                 <div class="col-md-12">
                     <h1 class="text" id="title">Totally Tubular Trivia</h1>
-                    <p id="timer">Time Remaining: 14 Seconds</p>
-                    <p id="question">What is the name of the oldest son of Marge and Homer Simpson</p>
-                    <div class="answer">blah blah blah
-                        <a href="http://google.com"></a>
+                    <p id="timer"></p>
+                    <p id = "start-button">Start</p>
+                    <div class="question-page">
+                        <p id="timer"></p>
                     </div>
-                    <div class="answer">blah blah blah</div>
-                    <div class="answer">blah blah blah</div>
-                    <div class="answer">blah blah blah</div>
+                <div class="response-page">  
                 </div>
             </div>
             <div class="col-md-1">
@@ -35,22 +33,6 @@
     </div>
 
 
-<script>
-        jQuery(document).ready(function($) {
-        
-        /*----------------------------
-            make entire div clickable
-        -----------------------------*/
-        
-            $(".myBox").click(function(){
-                window.location=$(this).find("a").attr("href"); 
-                return false;
-            });
-        
-        });
-        </script>
-        
-      
-    
-</body>
+<script type="text/javascript" src="./assets/javascript/app.js"></script>
+        </body>
 </html>
