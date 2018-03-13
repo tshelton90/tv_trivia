@@ -20,7 +20,9 @@ jQuery(document).ready(function($) {
             c: 'Cheers',
             d: 'Friends',
             answer: 'B: Seinfeld',
-            gif: 'assets/images/seinfeld.gif'
+            gifRight: 'assets/images/seinfeld.gif',
+            gifWrong: 'assets/images/seinfeldwrong.gif',
+            gifOOT: 'assets/images/outoftime.gif'
         };
     var question2 = {
             character: 'Pam Beasley',
@@ -29,7 +31,8 @@ jQuery(document).ready(function($) {
             c: 'The Office',
             d: 'How I Met Your Mother',
             answer:'C: The Office',
-            gif: 'assets/images/theoffice.gif'
+            gifRight: 'assets/images/theoffice.gif',
+            gifWrong: 'assets/images/theofficewrong.gif'
         };
     var question3 = {
         character: 'Montgomery Burns',
@@ -38,10 +41,88 @@ jQuery(document).ready(function($) {
         c: 'The PJs',
         d: 'The Simpsons',
         answer: 'D: The Simpsons',
-        gif: 'assets/images/simpsons.gif'
+        gifRight: 'assets/images/simpsons.gif',
+        gifWrong: 'assets/images/simpsonswrong.gif'
         };
 
-    var quesArray = [question1, question2, question3]
+    var question4 = {
+        character: 'Topanga Lawrence',
+        a: 'Boy Meets World',
+        b: 'Sabrina',
+        c: 'Good Times',
+        d: 'Meet the Lawrences',
+        answer: 'A: Boy Meets World',
+        gifRight: 'assets/images/bmw.gif',
+        gifWrong: 'assets/images/bmwwrong.gif'
+    };
+
+    var question5 = {
+        character: 'Dale Gribble',
+        a: 'American Dad',
+        b: 'South Park',
+        c: 'King of the Hill',
+        d: 'Futurama',
+        answer: 'C: King of the Hill',
+        gifRight: 'assets/images/koth.gif',
+        gifWrong: 'assets/images/kothwrong.gif'
+    };
+
+    var question6 = {
+        character: 'Phil Dumphy',
+        a: 'Blackish',
+        b: 'Superstore',
+        c: 'The Goldbergs',
+        d: 'Modern Family',
+        answer: 'D: Modern Family',
+        gifRight: 'assets/images/modernfamily.gif',
+        gifWrong: 'assets/images/modernfamilywrong.gif'
+    };
+
+    var question7 = {
+        character: 'Gene Belcher',
+        a: 'The Cleveland Show',
+        b: 'Bobs Burgers',
+        c: 'King of the Hill',
+        d: 'The Simpsons',
+        answer: 'B: Bobs Burgers',
+        gifRight: 'assets/images/bobsburgers.gif',
+        gifWrong: 'assets/images/bobsburgerswrong.gif'
+    };
+
+    var question8 = {
+        character: 'Balki Bartokomous',
+        a: 'Alf',
+        b: 'The Facts of Life',
+        c: 'Perfect Strangers',
+        d: 'Night Court',
+        answer: 'C: Perfect Strangers',
+        gifRight: 'assets/images/perfectstrangers.gif',
+        gifWrong: 'assets/images/perfectstrangerswrong.gif'
+    };
+
+    var question9 = {
+        character: 'Abed Nadir',
+        a: '30 Rock',
+        b: 'Community',
+        c: 'Parks and Rec',
+        d: 'Arrested Development',
+        answer: 'B: Community',
+        gifRight: 'assets/images/community.gif',
+        gifWrong: 'assets/images/communitywrong.gif'
+    };
+
+    var question10 = {
+        character: 'Phil Banks',
+        a: 'The Wonder Years',
+        b: 'The Fresh Prince',
+        c: 'Full House',
+        d: 'Family Matters',
+        answer: 'B: The Fresh Prince',
+        gifRight: 'assets/images/freshprince.gif',
+        gifWrong: 'assets/images/freshprincewrong.gif'
+    };
+
+    var quesArray = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10]
     
     // need to iterate through said array to choose the question
     var index = 0;
@@ -54,6 +135,7 @@ jQuery(document).ready(function($) {
     $('#start-button').click(function() {
         $('#start-button').hide();
         $('.question-page').show();
+        $('#timer').show()
         displayQues();
         $('#timer').html(
             `You have ${time} seconds remaining.`);
@@ -102,7 +184,7 @@ jQuery(document).ready(function($) {
         // $('.question-page').empty
         $('.question-page').html(
             `<p id="answer">Congratulations the correct answer was: <br/> <br/>${quesArray[index].answer}</p>
-             <img id="gif" src=${quesArray[index].gif} alt=${quesArray[index].answer} gif>
+             <img id="gif" src=${quesArray[index].gifRight} alt=${quesArray[index].answer} gif>
             `);
     };
 
@@ -111,7 +193,7 @@ jQuery(document).ready(function($) {
         // $('.question-page').clear
         $('.question-page').html(
             `<p id="answer">Wrong, the correct answer was: <br/> <br/>${quesArray[index].answer}</p>
-             <img id="gif" src=${quesArray[index].gif} alt=${quesArray[index].answer} gif>
+             <img id="gif" src=${quesArray[index].gifWrong} alt=${quesArray[index].answer} gif>
             `);
     };
 
@@ -120,7 +202,7 @@ jQuery(document).ready(function($) {
         // $('.question-page').clear
         $('.question-page').html(
             `<p id="answer">You have run out of time, the correct answer was: <br/> <br/>${quesArray[index].answer}</p>
-             <img id="gif" src=${quesArray[index].gif} alt=${quesArray[index].answer} gif>
+             <img id="gif" src=${quesArray[0].gifOOT} alt=${quesArray[index].answer} gif>
             `);
     };
 
