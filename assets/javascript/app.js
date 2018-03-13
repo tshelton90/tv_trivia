@@ -1,18 +1,5 @@
 jQuery(document).ready(function($) {
-        
-    // /*----------------------------
-    //     make entire div clickable
-    // -----------------------------*/
-    
-    //     $(".myBox").click(function(){
-    //         window.location=$(this).find("a").attr("href"); 
-    //         return false;
-    //     });
-    
-    // });
-//need a start button that when clicked kicks off the game
-
-    // need a set of questions and answers
+    // set of questions and answers
     var question1 = {
             character: 'Elaine Benes',
             a: 'Frasier',
@@ -110,7 +97,6 @@ jQuery(document).ready(function($) {
         gifRight: 'assets/images/community.gif',
         gifWrong: 'assets/images/communitywrong.gif'
     };
-
     var question10 = {
         character: 'Phil Banks',
         a: 'The Wonder Years',
@@ -121,17 +107,15 @@ jQuery(document).ready(function($) {
         gifRight: 'assets/images/freshprince.gif',
         gifWrong: 'assets/images/freshprincewrong.gif'
     };
-
+    // array of questions
     var quesArray = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10]
-    
-    // need to iterate through said array to choose the question
     var index = 0;
     var right = 0;
     var wrong = 0;
     var unanswered = 0;
     var numTimeout = 0;
    
-  
+    // functionality of start button being clicked
     $('#start-button').click(function() {
         $('#start-button').hide();
         $('.question-page').show();
@@ -139,10 +123,7 @@ jQuery(document).ready(function($) {
         displayQues();
         $('#timer').html(
             `You have ${time} seconds remaining.`);
-        // do something with the text
-    });
-        
-        
+    });    
     // Displays the next question resets the timer and begins the countdown
     function displayQues(){
         time = 15
@@ -155,7 +136,6 @@ jQuery(document).ready(function($) {
             <div class="answer" id="answer4">D: ${quesArray[index].d}</div>`
         );
     };
-
     // Counts down & displays the remaining time. Stops if time = 0 and starts an animation when time remaining < 10sec.
     function increment() {
         time--
@@ -164,106 +144,71 @@ jQuery(document).ready(function($) {
         if (time == 0) {
             timeout();
             stop();
-            // $(".question-page").empty();
         }; 
     };
-
     // stops the countdown and decides if there are more questions to go onto to
     function stop() {
         clearInterval(counter);
         index++
         if (index == quesArray.length) {
-            setTimeout(endgame, 5000);
+            setTimeout(endgame, 4000);
         } else {
-            setTimeout(displayQues, 5000);
+            setTimeout(displayQues, 4000);
         };
     };
-
     // Lets the user know they got the question right and displays an image.
     function rightAnswer() {
-        // $('.question-page').empty
         $('.question-page').html(
             `<p id="answer">Congratulations the correct answer was: <br/> <br/>${quesArray[index].answer}</p>
              <img id="gif" src=${quesArray[index].gifRight} alt=${quesArray[index].answer} gif>
             `);
     };
-
+    // cuts to the answer display page and displays wrong answer
     function wrongAnswer() {
         wrong++;
-        // $('.question-page').clear
         $('.question-page').html(
             `<p id="answer">Wrong, the correct answer was: <br/> <br/>${quesArray[index].answer}</p>
              <img id="gif" src=${quesArray[index].gifWrong} alt=${quesArray[index].answer} gif>
             `);
     };
-
+    // cuts to the answer display page and shows the user ran out of time
     function timeout() {
         numTimeout++
-        // $('.question-page').clear
         $('.question-page').html(
             `<p id="answer">You have run out of time, the correct answer was: <br/> <br/>${quesArray[index].answer}</p>
              <img id="gif" src=${quesArray[0].gifOOT} alt=${quesArray[index].answer} gif>
             `);
     };
-
+    // resets the game after the final page
     function gameReset() {
         $('#start-button').show();
         $('.question-page').hide();
-        $('#timer').hide()
     };
-
+    // this is the final stats page
     function endgame() {
-        // $('.question-page').clear
         $(".question-page").html(`<p id="final-right">You got ${right} answers correct!</p>
             <p id="final-wrong">You got ${wrong} wrong!</p>
             <p id="final-timeouts">You had ${numTimeout} unanswered questions!</p>`);
+        $('#timer').hide()
         index = 0;
         right = 0;
         wrong = 0;
         numTimeout=0;
         setTimeout(gameReset, 5000)
-       // $("button").show(); need to reset the page
     };
-
-
+    //adds functionality to clicking on the optional answer buttons
     $('.question-page').on('click', '.answer', function(){
         text = $(this).text()
         console.log(text)
         if ($(this).text() == quesArray[index].answer) {
             right++;
             rightAnswer();
-            stop();
-            
-            
+            stop();    
         } else {
             wrongAnswer();
             stop();
         };
-    
-        // $(".question-page").empty();
     });
-        
-    
-
-    
-    
-
-      
-    
-     
-     
-    
-    //need to set a timer for each question to be answered
-    //need to display(dom manipulation) the question and timer once they have been set up and selected
-    //need to add functionality based on clicks of answers
-    // if right answer wrong answer or no answer is clicked change dom accordingly
-    //reset the loop so that a new question is displyed
-    // once the loop has been iterated through once reset the dom to show stats
-
-
-
-
-
 // this is the end keep this at the bottom
 });
 
